@@ -26,9 +26,11 @@ export default function BoardPage() {
     //   boardId: "63c662221182750028ed0fac",
     // });
     // setTitle(result.fetchBoard.title);
+    debugger;
     const { data } = await axios.get(
       "https://www.fishwatch.gov/api/species/red-snapper"
     );
+    debugger;
     setTitle(data[0].Quote);
   }, []);
   // const { data } = useQuery(FETCH_BOARD, {
