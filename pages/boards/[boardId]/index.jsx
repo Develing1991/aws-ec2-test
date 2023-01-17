@@ -1,17 +1,6 @@
 import { useRouter } from "next/router";
 import { gql } from "@apollo/client";
-import { useEffect, useState } from "react";
-
-import axios from "axios";
-
 export default function BoardPage() {
-  const [title, setTitle] = useState("");
-  useEffect(async () => {
-    const { data } = await axios.get(
-      "https://www.fishwatch.gov/api/species/red-snapper"
-    );
-    setTitle(data[0].Quote);
-  }, []);
   const router = useRouter();
   return (
     <div>
