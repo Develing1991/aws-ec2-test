@@ -26,10 +26,12 @@ export default function BoardPage() {
     //   boardId: "63c662221182750028ed0fac",
     // });
     // setTitle(result.fetchBoard.title);
-    const { data } = await axios.get("https://koreanjson.com/posts/1");
-    console.log(data);
-    setTitle(data.title);
-  });
+    const { data } = await axios.get(
+      "https://meowfacts.herokuapp.com/?count=3"
+    );
+    console.log(data.data);
+    setTitle(data.data[0]);
+  }, []);
   // const { data } = useQuery(FETCH_BOARD, {
   //   variables: {
   //     boardId: "63c662221182750028ed0fac",
