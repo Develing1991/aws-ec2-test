@@ -27,10 +27,9 @@ export default function BoardPage() {
     // });
     // setTitle(result.fetchBoard.title);
     const { data } = await axios.get(
-      "https://meowfacts.herokuapp.com/?count=3"
+      "https://www.fishwatch.gov/api/species/red-snapper"
     );
-    console.log(data.data);
-    setTitle(data.data[0]);
+    setTitle(data[0].Quote);
   }, []);
   // const { data } = useQuery(FETCH_BOARD, {
   //   variables: {
