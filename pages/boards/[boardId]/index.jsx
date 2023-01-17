@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { gql } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { GraphQLClient } from "graphql-request";
+import axios from "axios";
 //import axios from "axios";
 
 const FETCH_BOARD = gql`
@@ -18,14 +19,16 @@ const FETCH_BOARD = gql`
 export default function BoardPage() {
   const [title, setTitle] = useState("");
   useEffect(async () => {
-    const graphQLClient = new GraphQLClient(
-      "https://backendonline.codebootcamp.co.kr/graphql"
-    );
-    const result = await graphQLClient.request(FETCH_BOARD, {
-      boardId: "63c662221182750028ed0fac",
-    });
-    setTitle(result.fetchBoard.title);
-    // console.log(result.fetchBoard.title);
+    // const graphQLClient = new GraphQLClient(
+    //   "https://backendonline.codebootcamp.co.kr/graphql"
+    // );
+    // const result = await graphQLClient.request(FETCH_BOARD, {
+    //   boardId: "63c662221182750028ed0fac",
+    // });
+    // setTitle(result.fetchBoard.title);
+    const { data } = await axios.get("https://koreanjson.com/posts/1");
+    console.log(data);
+    setTitle(data.title);
   });
   // const { data } = useQuery(FETCH_BOARD, {
   //   variables: {
