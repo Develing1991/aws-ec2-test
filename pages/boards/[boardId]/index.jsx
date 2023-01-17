@@ -1,43 +1,17 @@
 import { useRouter } from "next/router";
 import { gql } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { GraphQLClient } from "graphql-request";
-import axios from "axios";
-//import axios from "axios";
 
-const FETCH_BOARD = gql`
-  query fetchBoard($boardId: ID!) {
-    fetchBoard(boardId: $boardId) {
-      _id
-      writer
-      title
-      contents
-    }
-  }
-`;
+import axios from "axios";
 
 export default function BoardPage() {
   const [title, setTitle] = useState("");
   useEffect(async () => {
-    // const graphQLClient = new GraphQLClient(
-    //   "https://backendonline.codebootcamp.co.kr/graphql"
-    // );
-    // const result = await graphQLClient.request(FETCH_BOARD, {
-    //   boardId: "63c662221182750028ed0fac",
-    // });
-    // setTitle(result.fetchBoard.title);
-    debugger;
     const { data } = await axios.get(
       "https://www.fishwatch.gov/api/species/red-snapper"
     );
-    debugger;
     setTitle(data[0].Quote);
   }, []);
-  // const { data } = useQuery(FETCH_BOARD, {
-  //   variables: {
-  //     boardId: "63c662221182750028ed0fac",
-  //   },
-  // });
   const router = useRouter();
   return (
     <div>
