@@ -1,18 +1,20 @@
 // import { useQuery } from "@apollo/client";
-// import { gql } from "graphql-request";
+
+// import { gql } from "@apollo/client";
 import axios from "axios";
+import { GraphQLClient, gql } from "graphql-request";
 import { useRouter } from "next/router";
 
-// const FETCH_BOARD = gql`
-//   query fetchBoard($boardId: ID!) {
-//     fetchBoard(boardId: $boardId) {
-//       _id
-//       writer
-//       title
-//       contents
-//     }
-//   }
-// `;
+const FETCH_BOARD = gql`
+  query fetchBoard($boardId: ID!) {
+    fetchBoard(boardId: $boardId) {
+      _id
+      writer
+      title
+      contents
+    }
+  }
+`;
 
 export default function BoardPage() {
   const router = useRouter();
@@ -28,11 +30,22 @@ export default function BoardPage() {
     console.log(result);
     alert("fdsd");
   };
+  const bbb = async () => {
+    const graphQLClient = new GraphQLClient(
+      "https://backendonline.codebootcamp.co.kr/graphql"
+    );
+    const result = await graphQLClient.request(FETCH_BOARD, {
+      boardId: "63c67ebf1182750028ed0fb4",
+    });
+    console.log(result);
+  };
+
   return (
     <div>
       {/* <div>{data?.fetchBoard.writer}</div>
       <div>{data?.fetchBoard.contents}</div> */}
       <button onClick={aaa}>ㅅㅅㅅ</button>
+      <button onClick={bbb}>bbb</button>
       안녕. 동적페이지 테스트 <br />
       동적페이지 게시글 아이디 : {router.query.boardId}
     </div>
