@@ -11,12 +11,13 @@ export default function BoardPage() {
     const { data } = await axios.get(
       "https://www.fishwatch.gov/api/species/red-snapper"
     );
+    console.log(data[0]);
     setTitle(data[0].Quote);
   };
   const router = useRouter();
   return (
     <div>
-      <button onClick={aaa}></button>
+      <button onClick={aaa}>버튼</button>
       <div>{title}</div>
       안녕. 동적페이지 테스트 <br />
       동적페이지 게시글 아이디 : {router.query.boardId}
