@@ -1,24 +1,9 @@
 import { useRouter } from "next/router";
-import { gql } from "@apollo/client";
-import { useState } from "react";
-
-import axios from "axios";
 
 export default function BoardPage() {
-  const [title, setTitle] = useState("초기값");
-
-  const aaa = async () => {
-    const { data } = await axios.get(
-      "https://www.fishwatch.gov/api/species/red-snapper"
-    );
-    console.log(data[0]);
-    setTitle(data[0].Quote);
-  };
   const router = useRouter();
   return (
     <div>
-      <button onClick={aaa}>버튼</button>
-      <div>{title}</div>
       안녕. 동적페이지 테스트 <br />
       동적페이지 게시글 아이디 : {router.query.boardId}
     </div>
