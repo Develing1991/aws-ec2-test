@@ -10,6 +10,14 @@ const nextConfig = {
     "/boards": { page: "/boards" },
     "/404": { page: "/404" },
   }),
+  async rewrites() {
+    return [
+      {
+        destination: "https://backendonline.codebootcamp.co.kr/graphql/:path*",
+        source: "/",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
